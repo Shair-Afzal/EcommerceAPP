@@ -56,9 +56,7 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     marginBottom: hp(5),
   },
-  form: {
-    flex: 1,
-  },
+  
   inputContainer: {
     marginBottom: 20,
   },
@@ -102,7 +100,7 @@ export const styles = StyleSheet.create({
   },
   forgotPasswordButton: {
     alignSelf: 'flex-start',
-    marginBottom: 100,
+    // marginBottom: hp(12),
   },
   forgotPasswordText: {
     fontFamily: fontFamily.medium,
@@ -131,7 +129,8 @@ export const styles = StyleSheet.create({
   orContainer: {
     alignItems: 'center',
   justifyContent:"center",
-    marginBottom: hp(2),
+    marginBottom: hp(3.5),
+    marginTop:hp(3.5)
   },
   orLine: {
     flex: 1,
@@ -147,11 +146,11 @@ export const styles = StyleSheet.create({
   socialButtonsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 50,
+    // marginBottom: 50,
   },
   socialButton: {
-    width: 160,
-    height: 56,
+     height:hp(7),
+     width:"47%",
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
     justifyContent: 'center',
@@ -169,17 +168,18 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     paddingBottom: 30,
     marginTop: 0,
+   
   },
   footerText: {
     fontFamily: fontFamily.DMreg,
-    fontSize: 14,
+    fontSize: fontSize.small,
     color: '#A4A4A4',
   },
   signUpText: {
     fontFamily: fontFamily.medium,
     // marginTop: 100,
-    fontSize: 14,
-    color: '#1D4ED8',
+    fontSize:fontSize.small,
+    color:colors.primaryColor,
     fontWeight: '600',
   },
 });

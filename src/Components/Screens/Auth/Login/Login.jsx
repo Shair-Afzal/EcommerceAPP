@@ -4,16 +4,18 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  SafeAreaView,
   KeyboardAvoidingView,
   Platform,
   Image,
+  ScrollView
 } from 'react-native';
 import { styles } from './index';
 import CustomButton from '../../../CustomComp/CustomButton/CustomButton'
 import Custominput from "../../../CustomComp/Custominput/Custominput"
 import Vector from "../../../assets/SVG/Vector.svg"
 import { hp, wp } from '../../../constant';
+import Google from '../../../assets/SVG/Google.svg'
+import Apple from '../../../assets/SVG/Apple.svg'
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -72,7 +74,7 @@ const Login = () => {
           {/* Header with back button */}
           <View style={styles.header}>
             <TouchableOpacity style={styles.backButton}>
-              <Vector height={hp(4.5)} width={wp(4.5)}/>
+              <Vector height={hp(5)} width={wp(5)}/>
             </TouchableOpacity>
             <Text style={styles.headerTitle}>Login</Text>
           </View>
@@ -84,9 +86,8 @@ const Login = () => {
             <Text style={styles.welcomeText}>Welcome back, Sign in to your account</Text>
 
             {/* Form */}
-            <View style={styles.form}>
               {/* Email Input */}
-              <Custominput righticon={true}/>
+              <Custominput righticon={true} />
 
              <Custominput Lefticon={true} secureTextEntry={true}/>
              
@@ -99,7 +100,7 @@ const Login = () => {
                 <Text style={styles.forgotPasswordText}>Forgot password?</Text>
               </TouchableOpacity>
 
-              {/* Sign In Button */}
+               <View style={{position:"absolute",bottom:hp(5)}}>
               <CustomButton btnTitle={"Sign in"}/>
 
               {/* OR Separator */}
@@ -109,24 +110,17 @@ const Login = () => {
 
               </View>
 
-              {/* Social Login Buttons */}
+
               <View style={styles.socialButtonsContainer}>
                 <TouchableOpacity style={styles.socialButton} onPress={handleGoogleLogin}>
-                  <Image 
-                    source={require('../../../assets/images/social/google.png')}
-                    style={styles.socialButtonIcon}
-                    resizeMode="contain"
-                  />
+                  <Google height={hp(5)} width={wp(5)}/>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.socialButton} onPress={handleAppleLogin}>
-                  <Image 
-                    source={require('../../../assets/images/social/apple.png')}
-                    style={styles.socialButtonIcon}
-                    resizeMode="contain"
-                  />
+                  <Apple height={hp(5)} width={wp(5)}/>
                 </TouchableOpacity>
               </View>
-            </View>
+              </View>
+           
           </View>
 
           {/* Footer */}
@@ -136,7 +130,7 @@ const Login = () => {
               <Text style={styles.signUpText}>Sign up</Text>
             </TouchableOpacity>
           </View>
-       
+          
       </KeyboardAvoidingView>
     </View>
   );
