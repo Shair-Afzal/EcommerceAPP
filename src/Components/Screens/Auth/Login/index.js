@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
     paddingHorizontal:wp(5),
-    // paddingTop:insert.top,
+    paddingTop:hp(2),
     // paddingBottom:insert.bottom,
   },
   keyboardAvoidingView: {
@@ -36,25 +36,25 @@ export const styles = StyleSheet.create({
   },
   headerTitle: {
     fontFamily: fontFamily.medium,
-    fontSize: fontSize.small,
+    fontSize: fontSize.statusSize,
     fontWeight: '600',
     color: '#000000',
   },
   mainContent: {
     flex: 1,
-    paddingTop:hp(2.5)
+    paddingTop:hp(4.5)
   },
   greeting: {
     fontFamily: fontFamily.bold,
     fontSize: fontSize.medium,
     color: '#000000',
-    marginBottom: 5,
+    marginBottom: hp(1),
   },
   welcomeText: {
     fontFamily: fontFamily.DMreg,
     fontWeight: '400',
     fontSize: 12,
-    marginBottom: hp(5),
+    marginBottom: hp(7),
   },
   
   inputContainer: {
@@ -166,8 +166,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: 30,
-    marginTop: 0,
+    // paddingBottom: 30,
+    marginTop: hp(5),
    
   },
   footerText: {

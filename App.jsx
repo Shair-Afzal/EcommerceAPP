@@ -7,6 +7,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 import AppStackNavigator from './src/Components/Navigation/AppStackNavigator'
 import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'react-native';
+
 
 const App = () => {
   return (
@@ -16,6 +18,11 @@ const App = () => {
         backgroundColor: colors.backgroundColor,
       }}
     >
+      <StatusBar
+    
+              backgroundColor={colors.DarkWhite}
+              barStyle="dark-content"
+            />
       <NavigationContainer>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>

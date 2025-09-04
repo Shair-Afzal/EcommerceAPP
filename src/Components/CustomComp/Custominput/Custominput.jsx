@@ -4,15 +4,22 @@ import {fontSize, wp,fontFamily, hp} from '../../constant/index'
 import { colors } from '../../constant/index'
 import Mail from "../../assets/SVG/mail.svg"
 import Eyeoff from "../../assets/SVG/eye-off.svg"
+import Person from "../../assets/SVG/Person.svg"
+import Lock from "../../assets/SVG/lock.svg"
 
-const Custominput = ({value,onChangeText,placholdercolor,placholder,righticon,Lefticon,inputstyle,secureTextEntry,eyepress}) => {
+const Custominput = ({value,onChangeText,placholdercolor,placholder,righticon,Lefticon,inputstyle,secureTextEntry,eyepress,icon}) => {
   return (
    <View style={[styles.inputContainer,inputstyle]}>
                 <View style={styles.inputWrapper}>
                    {
                     righticon&&
-                   
-                  <Mail height={hp(5.5)} width={wp(5.5)} />
+                    <>
+                   {
+                    icon?
+                   <Lock height={hp(6)} width={wp(6)}/>:
+                  <Mail height={hp(6)} width={wp(6)} />
+                   }
+                  </>
                    }
                   <TextInput
                     style={styles.input}
@@ -33,7 +40,7 @@ const Custominput = ({value,onChangeText,placholdercolor,placholder,righticon,Le
                     <TouchableOpacity
                     onPress={eyepress}
                     >
-                    <Eyeoff height={hp(5.5)} width={wp(5.5)}/>
+                    <Eyeoff height={hp(6)} width={wp(6)}/>
                     </TouchableOpacity>:null
                     }
                     </>
