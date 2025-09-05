@@ -54,7 +54,7 @@ const Login = ({ navigation }) => {
           validationSchema={loginValidationSchema}
           onSubmit={(values) => {
             console.log('Login values:', values);
-            navigation.navigate('SignUp'); // replace with actual login logic
+            navigation.navigate('SignUp'); 
           }}
         >
           {({
@@ -71,7 +71,6 @@ const Login = ({ navigation }) => {
                 Welcome back, Sign in to your account
               </Text>
 
-              {/* Email Input */}
               <Custominput
                 righticon
                 placholder={'Email'}
@@ -80,12 +79,12 @@ const Login = ({ navigation }) => {
                 onBlur={handleBlur('email')}
               />
               {touched.email && errors.email && (
-                <Text style={{ color: 'red', marginBottom: hp(1) }}>
+                <Text style={styles.errortxt}>
                   {errors.email}
                 </Text>
               )}
 
-              {/* Password Input */}
+              
               <Custominput
                 Lefticon
                 secureTextEntry={show}
@@ -98,7 +97,7 @@ const Login = ({ navigation }) => {
                 eyepress={() => setshow(!show)}
               />
               {touched.password && errors.password && (
-                <Text style={{ color: 'red', marginBottom: hp(1) }}>
+                <Text style={styles.errortxt}>
                   {errors.password}
                 </Text>
               )}

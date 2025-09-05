@@ -40,7 +40,7 @@ const Onbonding = ({navigation}) => {
         style={styles.mainBackground}
         resizeMode="cover"
       >
-        <View style={styles.gradientOverlay} />
+        
         <View style={styles.content}>
           <Text style={{...styles.title,color:step==1?colors.Black:colors.DarkWhite}}>
             {titles[step]}
@@ -60,7 +60,7 @@ const Onbonding = ({navigation}) => {
             ))}
           </View>
         </View>
-        {/* Navigation Button - Centered at bottom */}
+        
         <View style={styles.buttonContainer}>
           {
             step==2?

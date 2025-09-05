@@ -18,10 +18,10 @@ import { wp, hp, colors, fontSize, fontFamily } from '../../../constant';
     width: '100%',
     height: '100%',
   },
-  gradientOverlay: {
-    ...StyleSheet.absoluteFillObject, // fills entire screen
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-  },
+  // gradientOverlay: {
+  //   ...StyleSheet.absoluteFillObject, // fills entire screen
+  //   backgroundColor: 'rgba(0, 0, 0, 0.4)',
+  // },
   content: {
     flex: 1,
    padding:wp(4)
@@ -36,11 +36,10 @@ import { wp, hp, colors, fontSize, fontFamily } from '../../../constant';
     marginTop:hp(5)
   },
   subtitle: {
-    marginTop: 16, 
+    marginTop: hp(2), 
     fontFamily: fontFamily.DMreg,
     fontWeight: '400', 
     fontSize: fontSize.small, 
-    letterSpacing: 0, 
     color: colors.white,
     backgroundColor: 'transparent', 
     textAlign: 'left', 
@@ -65,14 +64,18 @@ import { wp, hp, colors, fontSize, fontFamily } from '../../../constant';
   },
   buttonContainer: {
     position: 'absolute',
-    bottom: 40,
+    bottom: hp(10),
     left: 0,
     right: 0,
     alignItems: 'center', // Center horizontally
+   
   },
   btncontainer: {
     width:"100%",
-    paddingHorizontal:wp(4)
+    paddingHorizontal:wp(4),
+    position:"absolute",
+    top:hp(0.3)
+   
 
   },
   

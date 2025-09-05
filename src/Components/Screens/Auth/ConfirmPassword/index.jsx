@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Vector from '../../../assets/SVG/Vector.svg';
 import { styles } from './style';
@@ -11,15 +11,17 @@ import { changePasswordInitialValues } from '../../../Utils/Validation/Initialva
 import { ChangePasswordSchema } from '../../../Utils/Validation/Schema';
 
 const ChangePassword = ({ navigation }) => {
+  const [show, setshow] = useState(true);
+  const [eye, seteye] = useState(true);
   const insert = useSafeAreaInsets();
 
   return (
     <Formik
       initialValues={changePasswordInitialValues}
       validationSchema={ChangePasswordSchema}
-      onSubmit={(values) => {
-        console.log("Password Changed:", values);
-        navigation.goBack(); // or navigate to login/home
+      onSubmit={values => {
+        console.log('Password Changed:', values);
+        navigation.navigate('Login'); // or navigate to login/home
       }}
     >
       {({ handleSubmit, values, errors, touched, setFieldValue }) => (
@@ -53,9 +55,9 @@ const ChangePassword = ({ navigation }) => {
               Lefticon={true}
               righticon={true}
               icon
-              placholder={"New Password"}
+              placholder={'New Password'}
               value={values.newPassword}
-              onChangeText={(text) => setFieldValue("newPassword", text)}
+              onChangeText={text => setFieldValue('newPassword', text)}
             />
             {errors.newPassword && touched.newPassword && (
               <Text style={styles.errortxt}>{errors.newPassword}</Text>
@@ -65,9 +67,9 @@ const ChangePassword = ({ navigation }) => {
               Lefticon={true}
               righticon={true}
               icon
-              placholder={"Confirm Password"}
+              placholder={'Confirm Password'}
               value={values.confirmPassword}
-              onChangeText={(text) => setFieldValue("confirmPassword", text)}
+              onChangeText={text => setFieldValue('confirmPassword', text)}
             />
             {errors.confirmPassword && touched.confirmPassword && (
               <Text style={styles.errortxt}>{errors.confirmPassword}</Text>
@@ -79,7 +81,11 @@ const ChangePassword = ({ navigation }) => {
             </View>
           </View>
 
-          <CustomButton btnTitle={"Change Password"} onPress={handleSubmit} style={{marginBottom:hp(2)}}/>
+          <CustomButton
+            btnTitle={'Change Password'}
+            onPress={handleSubmit}
+            style={styles.btn}
+          />
         </View>
       )}
     </Formik>

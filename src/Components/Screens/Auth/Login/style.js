@@ -3,32 +3,30 @@ import { wp, hp, colors, fontSize, fontFamily } from '../../../constant';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 // const insert=useSafeAreaInsets()
 export const styles = StyleSheet.create({
-  
   container: {
     flex: 1,
-    backgroundColor:colors.DarkWhite,
-    paddingHorizontal:wp(5),
-    paddingTop:hp(4),
+    backgroundColor: colors.DarkWhite,
+    paddingHorizontal: wp(5),
+    paddingTop: hp(4),
     // paddingBottom:insert.bottom,
   },
   keyboardAvoidingView: {
     flex: 1,
   },
-  
+
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingBottom: 30,
-    gap:wp(3)
-    
+    gap: wp(3),
   },
   backButton: {
-    height:hp(4),
-    width:hp(4),
-    backgroundColor:colors.lightGray,
-    borderRadius:100,
-    justifyContent:"center",
-    alignItems:"center"
+    height: hp(4),
+    width: hp(4),
+    backgroundColor: colors.lightGray,
+    borderRadius: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   backButtonText: {
     fontSize: 20,
@@ -42,14 +40,14 @@ export const styles = StyleSheet.create({
   },
   mainContent: {
     flex: 1,
-    paddingTop:hp(4.5)
+    paddingTop: hp(4.5),
   },
   greeting: {
     fontFamily: fontFamily.bold,
     fontSize: fontSize.mediumLarge,
     color: '#000000',
     marginBottom: hp(1),
-    fontWeight:"600"
+    fontWeight: '600',
   },
   welcomeText: {
     fontFamily: fontFamily.DMreg,
@@ -58,7 +56,7 @@ export const styles = StyleSheet.create({
     marginBottom: hp(7),
     color: colors.textColor,
   },
-  
+
   inputContainer: {
     marginBottom: 20,
   },
@@ -107,8 +105,7 @@ export const styles = StyleSheet.create({
   forgotPasswordText: {
     fontFamily: fontFamily.medium,
     fontSize: fontSize.small,
-    color:colors.Black,
-
+    color: colors.Black,
   },
   signInButton: {
     width: 331,
@@ -130,9 +127,9 @@ export const styles = StyleSheet.create({
   },
   orContainer: {
     alignItems: 'center',
-  justifyContent:"center",
+    justifyContent: 'center',
     marginBottom: hp(3.5),
-    marginTop:hp(3.5)
+    marginTop: hp(3.5),
   },
   orLine: {
     flex: 1,
@@ -142,7 +139,7 @@ export const styles = StyleSheet.create({
   orText: {
     fontFamily: fontFamily.medium,
     fontSize: fontSize.small,
-    color:colors.textColor,
+    color: colors.textColor,
   },
   socialButtonsContainer: {
     flexDirection: 'row',
@@ -150,8 +147,8 @@ export const styles = StyleSheet.create({
     // marginBottom: 50,
   },
   socialButton: {
-     height:hp(7),
-     width:"47%",
+    height: hp(7),
+    width: '47%',
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
     justifyContent: 'center',
@@ -159,13 +156,12 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#E0E0E0',
   },
- 
+
   footer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: hp(5),
-   
   },
   footerText: {
     fontFamily: fontFamily.DMreg,
@@ -175,11 +171,15 @@ export const styles = StyleSheet.create({
   signUpText: {
     fontFamily: fontFamily.medium,
     // marginTop: 100,
-    fontSize:fontSize.small,
-    color:colors.primaryColor,
+    fontSize: fontSize.small,
+    color: colors.primaryColor,
     fontWeight: '600',
   },
-  btnwrapper:{
-    marginTop:hp(8)
-  }
+  btnwrapper: {
+    marginTop: hp(8),
+  },
+  errortxt: {
+    color: colors.red,
+    marginBottom: hp(1),
+  },
 });

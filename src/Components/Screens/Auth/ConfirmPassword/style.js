@@ -65,6 +65,9 @@ export const styles = StyleSheet.create({
   errortxt:{
     fontSize:fontSize.small,
     color:colors.red,
-    
+
+  },
+  btn:{
+    marginBottom:hp(2)
   }
 });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -20,6 +20,8 @@ import { initialValues } from '../../../Utils/Validation/Initialvalues';
 import { validationSchema } from '../../../Utils/Validation/Schema';
 
 const SignUp = ({ navigation }) => {
+  const [show,setshow]=useState(true)
+  const [eye,seteye]=useState(true)
   const insert = useSafeAreaInsets();
 
   const handleLogin = () => {
@@ -43,6 +45,7 @@ const SignUp = ({ navigation }) => {
         paddingTop: hp(3),
       }}
       showsVerticalScrollIndicator={false}
+      // keyboardShouldPersistTaps="handled"
     >
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -99,11 +102,13 @@ const SignUp = ({ navigation }) => {
                 righticon={true}
                 icon={true}
                 Lefticon={true}
-                secureTextEntry={true}
+                secureTextEntry={show}
                 placholder={"Password"}
                 value={values.password}
                 onChangeText={handleChange("password")}
                 onBlur={handleBlur("password")}
+                eyepress={()=>setshow(!show)}
+                
               />
               {touched.password && errors.password && (
                 <Text style={{ color: "red" }}>{errors.password}</Text>
@@ -113,11 +118,13 @@ const SignUp = ({ navigation }) => {
                 righticon={true}
                 icon={true}
                 Lefticon={true}
-                secureTextEntry={true}
+                secureTextEntry={eye}
                 placholder={"Confirm Password"}
                 value={values.confirmPassword}
                 onChangeText={handleChange("confirmPassword")}
                 onBlur={handleBlur("confirmPassword")}
+                eyepress={()=>seteye(!eye)}
+
               />
               {touched.confirmPassword && errors.confirmPassword && (
                 <Text style={{ color: "red" }}>{errors.confirmPassword}</Text>
