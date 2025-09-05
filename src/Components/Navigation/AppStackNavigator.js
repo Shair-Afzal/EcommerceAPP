@@ -6,6 +6,8 @@ import SignUp from '../Screens/Auth/SignUp';
 import Onbonding from '../Screens/Auth/Onbonding'
 import ForgetPassword from '../Screens/Auth/ForgetPassword';
 import ChangePassword from '../Screens/Auth/ConfirmPassword';
+import Home from "../Screens/EcommerceApp/HomeScreens/Home"
+import AIAssistantScreen from "../Screens/EcommerceApp/HomeScreens/AiAssistant"
 const Stack = createStackNavigator();
 
 const AppStackNavigator = () => {
@@ -15,6 +17,8 @@ const AppStackNavigator = () => {
         headerShown: false,
       }}
     >
+      <Stack.Screen name='AiAssistant' component={AIAssistantScreen}/>
+      <Stack.Screen name="Home" component={Home}/>
       <Stack.Screen name="Onbonding" component={Onbonding} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="SignUp" component={SignUp} />

@@ -6,9 +6,10 @@ import Mail from "../../assets/SVG/mail.svg"
 import Eyeoff from "../../assets/SVG/eye-off.svg"
 import Person from "../../assets/SVG/Person.svg"
 import Lock from "../../assets/SVG/lock.svg"
+import Search from "../../assets/SVG/Searchicon.svg"
 
 
-const Custominput = ({value,onChangeText,placholdercolor,placholder,righticon,Lefticon,inputstyle,secureTextEntry,eyepress,icon,fullname}) => {
+const Custominput = ({value,onChangeText,placholdercolor,placholder,righticon,Lefticon,inputstyle,secureTextEntry,eyepress,icon,fullname,search}) => {
   return (
    <View style={[styles.inputContainer,inputstyle]}>
                 <View style={styles.inputWrapper}>
@@ -36,6 +37,10 @@ const Custominput = ({value,onChangeText,placholdercolor,placholder,righticon,Le
                   {
                     Lefticon&&
                     <>
+                    {
+                      search?
+                      <Search height={hp(6)} width={wp(6)}/>:
+                      <>
                    {secureTextEntry ? (
         <TouchableOpacity onPress={eyepress}>
           <Eyeoff height={hp(6)} width={wp(6)} />
@@ -46,6 +51,8 @@ const Custominput = ({value,onChangeText,placholdercolor,placholder,righticon,Le
         
         </TouchableOpacity>
       )}
+      </>
+    }
                     </>
                   }
                 </View>

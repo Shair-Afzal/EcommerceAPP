@@ -53,7 +53,7 @@ import { wp, hp, colors, fontSize, fontFamily } from '../../../constant';
     width: wp(3),
     height: wp(3),
     borderRadius: 100,
-    marginRight: 6,
+    marginRight: hp(1),
   },
   activeDot: {
     backgroundColor: colors.primaryColor,

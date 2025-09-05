@@ -31,7 +31,8 @@ export const colors = {
   grey: '#9CA3AF',
   gold: '#EDB310',
   lightpink: '#FFF9E4',
-  forgettxtcolor:"#2A2A2A"
+  forgettxtcolor:"#2A2A2A",
+  lightBlue:"#f4f6fd"
 
 };
 
