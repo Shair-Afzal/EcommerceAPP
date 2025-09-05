@@ -65,19 +65,16 @@ import { wp, hp, colors, fontSize, fontFamily } from '../../../constant';
   },
   buttonContainer: {
     position: 'absolute',
-    bottom: 60,
+    bottom: 40,
     left: 0,
     right: 0,
     alignItems: 'center', // Center horizontally
   },
-  button: {
-   
+  btncontainer: {
+    width:"100%",
+    paddingHorizontal:wp(4)
 
   },
-  buttonIcon: {
-    width: 24,
-    height: 24,
-    resizeMode: 'contain',
-  },
+  
 });
 export default styles

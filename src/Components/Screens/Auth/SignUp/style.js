@@ -3,69 +3,53 @@ import { wp, hp, colors, fontSize, fontFamily } from '../../../constant';
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    width: 375, // Exact screen width
-    height: 812, // Exact screen height
+    flexGrow: 1,
+    backgroundColor:colors.DarkWhite,
+    paddingHorizontal:wp(4)
+   
   },
-  keyboardAvoidingView: {
-    flex: 1,
-  },
-  content: {
-    width: 331, // Exact content width
-    position: 'absolute',
-    top: 100, // Adjusted to make room for header
-    left: '50%',
-    transform: [{ translateX: -165.5 }], // Half of content width (331/2)
-    paddingHorizontal: 0,
-  },
+ 
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: 20,
     paddingBottom: 30,
-    position: 'absolute',
-    top: -110,
-    left: '50%',
-    transform: [{ translateX: -165.5 }], // Half of content width (331/2)
-    width: 331,
-    zIndex: 10,
+    gap:wp(3)
+    
   },
   backButton: {
-    marginRight: 15,
+    height:hp(4),
+    width:hp(4),
+    backgroundColor:colors.lightGray,
+    borderRadius:100,
+    justifyContent:"center",
+    alignItems:"center"
   },
   backButtonText: {
     fontSize: 20,
     color: '#000000',
   },
   headerTitle: {
-    fontFamily: fontFamily.medium,
-    fontSize: 16,
-    fontWeight: '600',
+   fontFamily: fontFamily.DMreg,
+    fontSize: fontSize.small,
+    fontWeight: '500',
     color: '#000000',
   },
   mainContent: {
     flex: 1,
   },
-  greeting: {
-    width: 201,
-    height: 29,
+    greeting: {
     fontFamily: fontFamily.bold,
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontSize: fontSize.mediumLarge,
     color: '#000000',
-    marginBottom: 5,
+    marginBottom: hp(1),
+    fontWeight:"600"
   },
   welcomeText: {
-    width: 234,
-    height: 18,
     fontFamily: fontFamily.DMreg,
     fontWeight: '400',
     fontSize: 12,
-    lineHeight: 12,
-    letterSpacing: 0,
-    color: '#A4A4A4',
-    marginBottom: 50,
+    marginBottom: hp(7),
+    color: colors.textColor,
   },
   form: {
     flex: 1,
@@ -136,7 +120,9 @@ export const styles = StyleSheet.create({
   orContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 50,
+    justifyContent:"center",
+    marginBottom: hp(5),
+    marginTop:hp(3)
   },
   orLine: {
     flex: 1,
@@ -152,11 +138,11 @@ export const styles = StyleSheet.create({
   socialButtonsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 50,
+    marginBottom: hp(4),
   },
-  socialButton: {
-    width: 160,
-    height: 56,
+ socialButton: {
+     height:hp(7),
+     width:"47%",
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
     justifyContent: 'center',
@@ -186,4 +172,7 @@ export const styles = StyleSheet.create({
     color: '#1D4ED8',
     fontWeight: '600',
   },
+  btncontainer:{
+    marginTop: hp(3)
+  }
 });

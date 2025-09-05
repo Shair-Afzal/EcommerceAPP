@@ -7,7 +7,8 @@ import Eyeoff from "../../assets/SVG/eye-off.svg"
 import Person from "../../assets/SVG/Person.svg"
 import Lock from "../../assets/SVG/lock.svg"
 
-const Custominput = ({value,onChangeText,placholdercolor,placholder,righticon,Lefticon,inputstyle,secureTextEntry,eyepress,icon}) => {
+
+const Custominput = ({value,onChangeText,placholdercolor,placholder,righticon,Lefticon,inputstyle,secureTextEntry,eyepress,icon,fullname}) => {
   return (
    <View style={[styles.inputContainer,inputstyle]}>
                 <View style={styles.inputWrapper}>
@@ -17,6 +18,9 @@ const Custominput = ({value,onChangeText,placholdercolor,placholder,righticon,Le
                    {
                     icon?
                    <Lock height={hp(6)} width={wp(6)}/>:
+                   fullname?
+                   <Person height={hp(6)} width={wp(6)}/>:
+
                   <Mail height={hp(6)} width={wp(6)} />
                    }
                   </>
@@ -24,25 +28,24 @@ const Custominput = ({value,onChangeText,placholdercolor,placholder,righticon,Le
                   <TextInput
                     style={styles.input}
                     placeholder={placholder}
-                    placeholderTextColor={placholdercolor}
+                    placeholderTextColor="#9CA3AF"
                     value={value}
                     onChangeText={onChangeText}
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                    autoCorrect={false}
                     secureTextEntry={secureTextEntry}
                   />
                   {
                     Lefticon&&
                     <>
-                    {
-                        secureTextEntry?
-                    <TouchableOpacity
-                    onPress={eyepress}
-                    >
-                    <Eyeoff height={hp(6)} width={wp(6)}/>
-                    </TouchableOpacity>:null
-                    }
+                   {secureTextEntry ? (
+        <TouchableOpacity onPress={eyepress}>
+          <Eyeoff height={hp(6)} width={wp(6)} />
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity onPress={eyepress}>
+          <Eyeoff height={hp(6)} width={wp(6)} fill="gray" /> 
+        
+        </TouchableOpacity>
+      )}
                     </>
                   }
                 </View>
@@ -76,7 +79,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontFamily: fontFamily.DMreg,
     fontSize: 16,
-    color: '#000000',
+    color: colors.Black,
     paddingVertical: 0,
   },
 })

@@ -12,7 +12,7 @@ export const colors = {
   primaryColor: '#1D4ED8', // Original primary color
   secondaryColor: '#323142D4',
   backgroundColor: '#fff',
-  textColor: '#333',
+  textColor: '#A4A4A4',
   textSecondaryColor: '#666',
   borderColor: '#ddd',
   lightGray: '#F9FAFB',
@@ -28,9 +28,10 @@ export const colors = {
   cream: '#FF82111A',
   greenishBlue: '#3c5760',
   lightGreenishBlue: '#4e6c76',
-  grey: '#B0B0B0',
+  grey: '#9CA3AF',
   gold: '#EDB310',
   lightpink: '#FFF9E4',
+  forgettxtcolor:"#2A2A2A"
 
 };
 

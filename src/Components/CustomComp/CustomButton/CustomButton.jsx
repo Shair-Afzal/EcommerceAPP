@@ -15,7 +15,7 @@ export default CustomButton;
 const styles = StyleSheet.create({
   button: {
     backgroundColor:colors.primaryColor,
-    padding: wp(4.5),
+    padding: wp(5),
     borderRadius: 16,
     width:"100%",
     justifyContent:"center",

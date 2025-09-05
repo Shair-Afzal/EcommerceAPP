@@ -6,9 +6,9 @@ export const styles = StyleSheet.create({
   
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor:colors.DarkWhite,
     paddingHorizontal:wp(5),
-    paddingTop:hp(2),
+    paddingTop:hp(4),
     // paddingBottom:insert.bottom,
   },
   keyboardAvoidingView: {
@@ -35,9 +35,9 @@ export const styles = StyleSheet.create({
     color: '#000000',
   },
   headerTitle: {
-    fontFamily: fontFamily.medium,
-    fontSize: fontSize.statusSize,
-    fontWeight: '600',
+    fontFamily: fontFamily.DMreg,
+    fontSize: fontSize.small,
+    fontWeight: '500',
     color: '#000000',
   },
   mainContent: {
@@ -46,15 +46,17 @@ export const styles = StyleSheet.create({
   },
   greeting: {
     fontFamily: fontFamily.bold,
-    fontSize: fontSize.medium,
+    fontSize: fontSize.mediumLarge,
     color: '#000000',
     marginBottom: hp(1),
+    fontWeight:"600"
   },
   welcomeText: {
     fontFamily: fontFamily.DMreg,
     fontWeight: '400',
     fontSize: 12,
     marginBottom: hp(7),
+    color: colors.textColor,
   },
   
   inputContainer: {
@@ -139,9 +141,8 @@ export const styles = StyleSheet.create({
   },
   orText: {
     fontFamily: fontFamily.medium,
-    fontSize: 14,
-    color: '#A4A4A4',
-    marginHorizontal: 15,
+    fontSize: fontSize.small,
+    color:colors.textColor,
   },
   socialButtonsContainer: {
     flexDirection: 'row',
@@ -158,22 +159,18 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#E0E0E0',
   },
-  socialButtonIcon: {
-    width: 24,
-    height: 24,
-  },
+ 
   footer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    // paddingBottom: 30,
     marginTop: hp(5),
    
   },
   footerText: {
     fontFamily: fontFamily.DMreg,
     fontSize: fontSize.small,
-    color: '#A4A4A4',
+    color: colors.textColor,
   },
   signUpText: {
     fontFamily: fontFamily.medium,
@@ -182,4 +179,7 @@ export const styles = StyleSheet.create({
     color:colors.primaryColor,
     fontWeight: '600',
   },
+  btnwrapper:{
+    marginTop:hp(8)
+  }
 });
