@@ -1,5 +1,14 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, TextInput, StyleSheet, SafeAreaView, StatusBar, Platform } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  StatusBar,
+  Image,
+  Keyboard,
+  FlatList,
+} from 'react-native';
 import {
   wp,
   hp,
@@ -7,200 +16,191 @@ import {
   radius,
   fontSize,
   fontFamily,
-} from '../../../../constant'; // Assuming the constant file is named constants.js in the same directory
+} from '../../../../constant';
+import Vector from '../../../../assets/SVG/Vector.svg';
+import Custominput from '../../../../CustomComp/Custominput/Custominput';
+import Chat from '../../../../assets/SVG/Chat.svg';
+import Copy from '../../../../assets/SVG/copyicon.svg';
+import Like from '../../../../assets/SVG/Like.svg';
+import Unlike from '../../../../assets/SVG/unlike.svg';
+import styles from './style';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const AIAssistantScreen = () => {
+const AIAssistantScreen = ({navigation}) => {
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const flatListRef = useRef();
+  const [messages, setMessages] = useState([
+    {
+      type: 'ai',
+      text: "Hi! I'm your personal AI assistant for home improvement materials. I can help you find perfect match stone, tile, lighting and more. What project are you working on?",
+      time: '10:52',
+    },
+  ]);
+  const [inputValue, setInputValue] = useState('');
+  const [showQuickResponses, setShowQuickResponses] = useState(true);
+
+  useEffect(() => {
+    const showListener = Keyboard.addListener('keyboardDidShow', () =>
+      setKeyboardVisible(true),
+    );
+    const hideListener = Keyboard.addListener('keyboardDidHide', () =>
+      setKeyboardVisible(false),
+    );
+
+    return () => {
+      showListener.remove();
+      hideListener.remove();
+    };
+  }, []);
+
+  const handleSend = () => {
+    if (!inputValue.trim()) return;
+    setShowQuickResponses(false);
+    const userMessage = {
+      type: 'user',
+      text: inputValue,
+      time: new Date().toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+      }),
+    };
+    setMessages(prev => [...prev, userMessage]);
+
+    setInputValue('');
+    setTimeout(() => {
+      const aiMessage = {
+        type: 'ai',
+        text: "That's a great choice! I’ll show you some options for your request.",
+        time: new Date().toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+        }),
+      };
+      setMessages(prev => [...prev, aiMessage]);
+    }, 1000);
+  };
+  const inset = useSafeAreaInsets();
+
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor={colors.backgroundColor} />
-      <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
-          <Text style={styles.backIcon}>←</Text>
-        </TouchableOpacity>
-        <Text style={styles.title}>AI Assistant</Text>
+    <View
+      style={{
+        ...styles.container,
+        paddingTop: inset.top,
+        paddingBottom: inset.bottom,
+        
+      }}
+    >
+        <StatusBar
+        hidden={false}
+        translucent={false}
+        backgroundColor={colors.DarkWhite}
+        barStyle="dark-content"
+      />
+      <View style={styles.headerWrapper}>
+        <View style={styles.header}>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => navigation.goBack()}
+          >
+            <Vector height={hp(5)} width={wp(5)} />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>AI Assistant</Text>
+        </View>
       </View>
+
       <View style={styles.chatContainer}>
-        <View style={styles.aiMessageContainer}>
-          <View style={styles.aiBubble}>
-            <Text style={styles.aiText}>
-              Hi! I'm your personal AI assistant for home improvement materials. I can help you find perfect match stone, tile, lighting and more. What project are you working on?
-            </Text>
-          </View>
-          <View style={styles.aiActions}>
-            <TouchableOpacity>
-              <Text style={styles.actionText}>Copy</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.thumbsUp}>
-              <Text style={styles.thumbsIcon}>👍</Text>
-            </TouchableOpacity>
-            <Text style={styles.timeText}>10:52</Text>
-          </View>
-        </View>
-        <View style={styles.userMessageContainer}>
-          <View style={styles.userBubble}>
-            <Text style={styles.userText}>What's the best tile for kitchen backsplash?</Text>
-          </View>
-        </View>
-        <Text style={styles.quickResponsesTitle}>Quick Responses</Text>
-        <TouchableOpacity style={styles.quickResponseButton}>
-          <Text style={styles.quickResponseText}>What's the best tile for kitchen backsplash?</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.quickResponseButton}>
-          <Text style={styles.quickResponseText}>Show me backdoor lighting options.</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.quickResponseButton}>
-          <Text style={styles.quickResponseText}>I need stone for fireplace.</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Ask about materials, compare options..."
-          placeholderTextColor={colors.textColor}
+        <FlatList
+          ref={flatListRef}
+          data={messages}
+          keyExtractor={(_, index) => index.toString()}
+          onContentSizeChange={() =>
+            flatListRef.current.scrollToEnd({ animated: true })
+          }
+          onLayout={() => flatListRef.current.scrollToEnd({ animated: true })}
+          renderItem={({ item }) =>
+            item.type === 'ai' ? (
+              <View style={styles.aiMessageContainer}>
+                <Chat height={hp(6)} width={wp(6)} />
+                <View style={styles.aiBubble}>
+                  <Text style={styles.aiText}>{item.text}</Text>
+                </View>
+                <View style={styles.aiActions}>
+                  <TouchableOpacity style={styles.copyButton}>
+                    <Copy height={hp(3)} width={wp(3)} />
+                    <Text style={styles.actionText}>Copy</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.thumbsUp}>
+                    <Like height={hp(3)} width={wp(3)} />
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.thumbsUp}>
+                    <Unlike height={hp(3)} width={wp(3)} />
+                  </TouchableOpacity>
+                  <Text style={styles.timeText}>{item.time}</Text>
+                </View>
+              </View>
+            ) : (
+              <View style={styles.userMessageContainer}>
+                <View style={styles.userBubble}>
+                  <Text style={styles.userText}>{item.text}</Text>
+                </View>
+                <Image
+                  source={require('../../../../assets/images/avatar.png')}
+                  style={styles.userAvatar}
+                />
+              </View>
+            )
+          }
+          contentContainerStyle={{ paddingBottom: hp(2) }}
+          showsVerticalScrollIndicator={false}
         />
-        <TouchableOpacity style={styles.sendButton}>
-          <Text style={styles.sendIcon}>▶</Text>
-        </TouchableOpacity>
       </View>
-    </SafeAreaView>
+
+      {!isKeyboardVisible && showQuickResponses && (
+        <View style={styles.quickResponseWrapper}>
+          <Text style={styles.quickResponsesTitle}>Quick Responses</Text>
+          <TouchableOpacity
+            style={styles.quickResponseButton}
+            onPress={() =>
+              setInputValue("What's the best tile for kitchen backsplash?")
+            }
+          >
+            <Text style={styles.quickResponseText}>
+              What's the best tile for kitchen backsplash?
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.quickResponseButton}
+            onPress={() => setInputValue('Show me backdoor lighting options.')}
+          >
+            <Text style={styles.quickResponseText}>
+              Show me backdoor lighting options.
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.quickResponseButton}
+            onPress={() => setInputValue('I need stone for fireplace.')}
+          >
+            <Text style={styles.quickResponseText}>
+              I need stone for fireplace.
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )}
+      <View style={styles.inputContainer}>
+        <Custominput
+          Lefticon
+          send
+          value={inputValue}
+          onChangeText={setInputValue}
+          styleinput={styles.inputStyle}
+          placholder={'Ask about materials, compare options.....'}
+          sendpress={handleSend}
+          style={styles.input}
+          
+        />
+      </View>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.backgroundColor,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: wp(4),
-    paddingVertical: hp(1),
-    borderBottomWidth: 1,
-    borderBottomColor: colors.borderColor,
-    backgroundColor: colors.backgroundColor,
-  },
-  backButton: {
-    marginRight: wp(4),
-  },
-  backIcon: {
-    fontSize: fontSize.medium,
-    color: colors.Black,
-    fontFamily: fontFamily.medium,
-  },
-  title: {
-    fontSize: fontSize.medium,
-    fontFamily: fontFamily.bold,
-    color: colors.Black,
-  },
-  chatContainer: {
-    flex: 1,
-    paddingHorizontal: wp(4),
-    paddingTop: hp(2),
-  },
-  aiMessageContainer: {
-    alignSelf: 'flex-start',
-    maxWidth: '80%',
-    marginBottom: hp(2),
-  },
-  aiBubble: {
-    backgroundColor: colors.lightGray,
-    borderRadius: radius.radius2,
-    padding: wp(3),
-  },
-  aiText: {
-    fontSize: fontSize.regSmall,
-    color: colors.Black,
-    fontFamily: fontFamily.DMreg,
-    lineHeight: hp(2.5),
-  },
-  aiActions: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: hp(0.5),
-    justifyContent: 'flex-start',
-  },
-  actionText: {
-    fontSize: fontSize.extraSmall,
-    color: colors.textSecondaryColor,
-    fontFamily: fontFamily.medium,
-    marginRight: wp(2),
-  },
-  thumbsUp: {
-    marginRight: wp(2),
-  },
-  thumbsIcon: {
-    fontSize: fontSize.extraSmall,
-    color: colors.textSecondaryColor,
-  },
-  timeText: {
-    fontSize: fontSize.extraSmall,
-    color: colors.textSecondaryColor,
-    fontFamily: fontFamily.DMreg,
-  },
-  userMessageContainer: {
-    alignSelf: 'flex-end',
-    maxWidth: '80%',
-    marginBottom: hp(3),
-  },
-  userBubble: {
-    backgroundColor: colors.primaryColor,
-    borderRadius: radius.radius2,
-    padding: wp(3),
-  },
-  userText: {
-    fontSize: fontSize.regSmall,
-    color: colors.DarkWhite,
-    fontFamily: fontFamily.DMreg,
-    lineHeight: hp(2.5),
-  },
-  quickResponsesTitle: {
-    fontSize: fontSize.small,
-    fontFamily: fontFamily.bold,
-    color: colors.Black,
-    marginBottom: hp(1),
-  },
-  quickResponseButton: {
-    backgroundColor: colors.DarkWhite,
-    borderRadius: radius.radius1,
-    padding: wp(3),
-    marginBottom: hp(1),
-    borderWidth: 1,
-    borderColor: colors.borderColor,
-  },
-  quickResponseText: {
-    fontSize: fontSize.regSmall,
-    color: colors.Black,
-    fontFamily: fontFamily.DMreg,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: wp(4),
-    paddingVertical: hp(1),
-    borderTopWidth: 1,
-    borderTopColor: colors.borderColor,
-    backgroundColor: colors.backgroundColor,
-  },
-  input: {
-    flex: 1,
-    backgroundColor: colors.DarkWhite,
-    borderRadius: radius.radius2,
-    paddingHorizontal: wp(3),
-    paddingVertical: Platform.OS === 'ios' ? hp(1.5) : hp(1),
-    fontSize: fontSize.regSmall,
-    fontFamily: fontFamily.DMreg,
-    color: colors.Black,
-    borderWidth: 1,
-    borderColor: colors.borderColor,
-  },
-  sendButton: {
-    marginLeft: wp(2),
-  },
-  sendIcon: {
-    fontSize: fontSize.medium,
-    color: colors.primaryColor,
-  },
-});
 
 export default AIAssistantScreen;

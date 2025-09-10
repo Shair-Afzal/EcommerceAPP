@@ -10,10 +10,10 @@ export const OPENCAGE_API_KEY = `b6eb041ec86f4cf983d97a391f18cf12`;
 
 export const colors = {
   primaryColor: '#1D4ED8', // Original primary color
-  secondaryColor: '#323142D4',
+  secondaryColor: '#212529',
   backgroundColor: '#fff',
   textColor: '#A4A4A4',
-  textSecondaryColor: '#666',
+  textSecondaryColor: '#949494',
   borderColor: '#ddd',
   lightGray: '#F9FAFB',
   DarkWhite: '#FFFFFF',
@@ -22,7 +22,7 @@ export const colors = {
   modalBackground: '#6a6a6a',
   Black: '#000000',
   dimBlack: '#808080',
-  lightBlack: '#0D0D0DCC',
+  lightBlack: '#2A2A2A',
   lightSilver: '#C4C4C44D',
   red: '#FF0000',
   cream: '#FF82111A',
@@ -32,7 +32,20 @@ export const colors = {
   gold: '#EDB310',
   lightpink: '#FFF9E4',
   forgettxtcolor:"#2A2A2A",
-  lightBlue:"#f4f6fd"
+  lightBlue:"#f4f6fd",
+  headerborder:"#f8f8f8",
+  inputborder:"#dae2f8",
+  litishblue:"#e3e9f7",
+  transparent:"#c9c3b9",
+  darkgrey:"#D9D9D9",
+  darkestgrey:"#989898",
+  lightestgrey:"#d4d4d4",
+  bordergrey:"#efefef",
+  standardtextcolor:"#898989",
+  greyborder:"#e5e5e5",
+  green:"#E9FCEB",
+  greentxt:"#4CD964"
+
 
 };
 
@@ -42,6 +55,7 @@ export const radius = {
   radius3: wp(7),
   radius4: wp(10),
   radius5: wp(90),
+  radius6:wp(3)
 };
 
 export const fontSize = {
@@ -56,6 +70,7 @@ export const fontSize = {
   extraLarge: wp(10),
   doubleXLarge: wp(14),
   superLarge: wp(18),
+  regularsize:wp(4.5)
 };
 
 export const fontFamily = {

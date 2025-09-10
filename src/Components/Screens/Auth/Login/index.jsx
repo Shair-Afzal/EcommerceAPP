@@ -5,12 +5,13 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
+  StatusBar,
 } from 'react-native';
 import { styles } from './style';
 import CustomButton from '../../../CustomComp/CustomButton/CustomButton';
 import Custominput from '../../../CustomComp/Custominput/Custominput';
 import Vector from '../../../assets/SVG/Vector.svg';
-import { hp, wp } from '../../../constant';
+import { colors, hp, wp } from '../../../constant';
 import Google from '../../../assets/SVG/Google.svg';
 import Apple from '../../../assets/SVG/Apple.svg';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -32,9 +33,14 @@ const Login = ({ navigation }) => {
         ...styles.container,
         paddingTop: insert.top,
         paddingBottom: insert.bottom,
-        paddingTop: hp(3),
       }}
     >
+    <StatusBar
+  hidden={false}
+  translucent={false}
+  backgroundColor={colors.DarkWhite}
+  barStyle="dark-content"
+/>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.keyboardAvoidingView}
@@ -54,7 +60,7 @@ const Login = ({ navigation }) => {
           validationSchema={loginValidationSchema}
           onSubmit={(values) => {
             console.log('Login values:', values);
-            navigation.navigate('SignUp'); 
+            navigation.navigate('HomeScreen'); 
           }}
         >
           {({

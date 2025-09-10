@@ -1,8 +1,8 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StatusBar } from 'react-native';
 import React, { useState } from 'react';
 import style, { styles } from './style';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { hp, wp } from '../../../constant';
+import { colors, hp, wp } from '../../../constant';
 import Vector from '../../../assets/SVG/Vector.svg';
 import Message from '../../../assets/SVG/Message.svg';
 import Arrow from '../../../assets/SVG/btnarrow.svg';
@@ -34,10 +34,16 @@ const ForgetPassword = ({ navigation }) => {
             {
               paddingTop: insert.top,
               paddingBottom: insert.bottom,
-              paddingTop: hp(3),
+              paddingTop: hp(2),
             },
           ]}
         >
+            <StatusBar
+            hidden={false}
+            translucent={false}
+            backgroundColor={colors.DarkWhite}
+            barStyle="dark-content"
+          />
           <View style={styles.header}>
             <TouchableOpacity
               style={styles.backButton}

@@ -1,9 +1,9 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StatusBar } from 'react-native';
 import React, { useState } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Vector from '../../../assets/SVG/Vector.svg';
 import { styles } from './style';
-import { hp, wp } from '../../../constant';
+import { colors, hp, wp } from '../../../constant';
 import Custominput from '../../../CustomComp/Custominput/Custominput';
 import CustomButton from '../../../CustomComp/CustomButton/CustomButton';
 import { Formik } from 'formik';
@@ -31,10 +31,16 @@ const ChangePassword = ({ navigation }) => {
             {
               paddingTop: insert.top,
               paddingBottom: insert.bottom,
-              paddingTop: hp(3),
+             
             },
           ]}
         >
+            <StatusBar
+            hidden={false}
+            translucent={false}
+            backgroundColor={colors.DarkWhite}
+            barStyle="dark-content"
+          />
           <View style={styles.header}>
             <TouchableOpacity
               style={styles.backButton}

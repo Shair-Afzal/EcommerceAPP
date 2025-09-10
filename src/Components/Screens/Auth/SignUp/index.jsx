@@ -6,10 +6,11 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  StatusBar,
 } from 'react-native';
 import { styles } from './style';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { hp, wp } from '../../../constant';
+import { colors, hp, wp } from '../../../constant';
 import Vector from '../../../assets/SVG/Vector.svg';
 import Custominput from '../../../CustomComp/Custominput/Custominput';
 import CustomButton from '../../../CustomComp/CustomButton/CustomButton';
@@ -42,11 +43,16 @@ const SignUp = ({ navigation }) => {
         ...styles.container,
         paddingTop: insert.top,
         paddingBottom: insert.bottom,
-        paddingTop: hp(3),
       }}
       showsVerticalScrollIndicator={false}
       // keyboardShouldPersistTaps="handled"
     >
+         <StatusBar
+         hidden={false}
+         translucent={false}
+         backgroundColor={colors.DarkWhite}
+         barStyle="dark-content"
+       />
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.keyboardAvoidingView}
