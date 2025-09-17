@@ -8,7 +8,7 @@ import ForgetPassword from '../Screens/Auth/ForgetPassword';
 import ChangePassword from '../Screens/Auth/ConfirmPassword';
 
 const Stack = createStackNavigator();
-
+ 
 const AuthStackNavigator = () => {
   return (
     <Stack.Navigator
